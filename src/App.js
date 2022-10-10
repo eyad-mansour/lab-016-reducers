@@ -1,23 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import { Developer } from './components/Developer';
+import { useReducer } from 'react';
+import DevList from './components/DeveloperList';
+import DeveloperForm from './components/DeveloperForm';
+import Footer from './components/Footer';
 
 function App() {
+  const [developer, dispatch] = useReducer(Developer, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <DeveloperForm dispatch={dispatch} />
+      <DevList devList={developer} dispatch={dispatch} />
+      <Footer />
     </div>
   );
 }
